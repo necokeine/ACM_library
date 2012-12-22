@@ -27,13 +27,15 @@ class SBT{
 				void clear();
 				val_type& operator[](key_type key);
 				val_type& at(key_type key);
-				bool isEmpty();
+				bool empty();
+				//bool earse(const T_key &key);
 };
 
 template<typename T_key,typename T_val>
 SBT<T_key,T_val>::SBT(){
 		root=NULL;
 }
+
 template<typename T_key,typename T_val>
 SBT<T_key,T_val>::~SBT(){
 		if (root!=NULL)
@@ -120,8 +122,18 @@ T_val& SBT<T_key,T_val>::operator[](key_type key){
 }
 
 template<typename T_key,typename T_val>
-bool SBT<T_key,T_val>::isEmpty(){
+bool SBT<T_key,T_val>::empty(){
 		return root==NULL;
 }
 
+/*template<typename T_key,typename T_val>
+bool SBT<T_key,T_val>::earse(const T_key & key){
+		Node * tmp=root;
+		while ((tmp!=NULL) && (tmp->key!=key))
+				tmp=tmp->ch[tmp->key<key];
+		if (tmp==NULL) return false;
+		else{
+				return true;
+		}
+}
 
